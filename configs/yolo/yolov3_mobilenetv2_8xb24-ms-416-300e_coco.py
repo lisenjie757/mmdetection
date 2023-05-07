@@ -65,7 +65,7 @@ model = dict(
         max_per_img=100))
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+data_root = '../data/COCO/'
 
 # Example to use different file client
 # Method 1: simply set the data root and let the file I/O module
@@ -110,8 +110,8 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=24,
-    num_workers=4,
+    batch_size=32,
+    num_workers=15,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
@@ -127,8 +127,8 @@ train_dataloader = dict(
             pipeline=train_pipeline,
             backend_args=backend_args)))
 val_dataloader = dict(
-    batch_size=24,
-    num_workers=4,
+    batch_size=32,
+    num_workers=15,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
@@ -173,4 +173,4 @@ find_unused_parameters = True
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (24 samples per GPU)
-auto_scale_lr = dict(base_batch_size=192)
+auto_scale_lr = dict(base_batch_size=64)
