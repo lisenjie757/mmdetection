@@ -10,14 +10,11 @@ model = dict(
     type='YOLOV3',
     data_preprocessor=data_preprocessor,
     backbone=dict(type='MobileNetV1'),
-    neck=dict(
-        type='YOLOV3Neck',
-        num_scales=3,
-        in_channels=[320, 96, 32],
-        out_channels=[96, 96, 96]),
+    neck=dict(type='YOLOK210Neck'),
     bbox_head=dict(
         type='YOLOV3Head',
-        num_classes=80,
+        act_cfg=dict(type='ReLU6',inplace=True),
+        num_classes=20,
         in_channels=[96, 96, 96],
         out_channels=[96, 96, 96],
         anchor_generator=dict(
