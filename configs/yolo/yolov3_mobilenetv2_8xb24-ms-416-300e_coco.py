@@ -13,8 +13,8 @@ model = dict(
         type='MobileNetV2',
         out_indices=(2, 4, 6),
         act_cfg=dict(type='LeakyReLU', negative_slope=0.1),
-        init_cfg=dict(
-            type='Pretrained', checkpoint='open-mmlab://mmdet/mobilenet_v2')),
+        #init_cfg=dict(type='Pretrained', checkpoint='open-mmlab://mmdet/mobilenet_v2')
+        ),
     neck=dict(
         type='YOLOV3Neck',
         num_scales=3,
