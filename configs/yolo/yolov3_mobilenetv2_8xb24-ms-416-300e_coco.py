@@ -149,7 +149,20 @@ val_dataloader = dict(
         test_mode=True,
         pipeline=test_pipeline,
         backend_args=backend_args))
-test_dataloader = val_dataloader
+test_dataloader = dict(
+    batch_size=64,
+    num_workers=15,
+    persistent_workers=True,
+    drop_last=False,
+    sampler=dict(type='DefaultSampler', shuffle=False),
+    dataset=dict(
+        type='VOCDataset',
+        ann_file='../data/VOCdevkit/VOC2007/ImageSets/Main/test.txt',
+        img_subdir='../data/VOCdevkit/VOC2007/test_img/',
+        ann_subdir='../data/VOCdevkit/VOC2007/Annotations/',
+        test_mode=True,
+        pipeline=test_pipeline,
+        backend_args=backend_args))
 
 # Pascal VOC2007 uses `11points` as default evaluate mode, while PASCAL
 # VOC2012 defaults to use 'area'.

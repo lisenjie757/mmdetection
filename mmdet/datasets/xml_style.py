@@ -132,6 +132,7 @@ class XMLDataset(BaseDetDataset):
                 continue
             difficult = obj.find('difficult')
             difficult = 0 if difficult is None else int(difficult.text)
+            
             bnd_box = obj.find('bndbox')
             bbox = [
                 int(float(bnd_box.find('xmin').text)),
