@@ -35,6 +35,21 @@ class YOLOK210Neck(nn.Module):
             conv_dw(32+96,96,kernel_size=3,strides=1,padding=1),
         )
 
+        # stride = 8
+        self.downsample1 = nn.Sequential(
+            conv_dw(96,96,kernel_size=3,strides=2,padding=1),
+        )
+
+        # stride = 16
+        self.downsample2 = nn.Sequential(
+            conv_dw(96+96,96,kernel_size=3,strides=2,padding=1),
+        )
+
+        # stride = 32
+        self.output = nn.Sequential(
+            conv_dw(96+96,96,kernel_size=3,strides=1,padding=1),
+        )
+
     def forward(self, feats):
         c3, c4, c5 = feats
 
@@ -48,4 +63,12 @@ class YOLOK210Neck(nn.Module):
         p3 = torch.cat([c3, p4_up], 1)
         p3 = self.convset1(p3)
 
-        return tuple([p5,p4,p3])
+        p3_down = self.downsample1(p3)
+        p4 = torch.cat([p3_down, p4], 1)
+
+        p4_down = self.downsample2(p4)
+        p5 = torch.cat([p4_down, p5], 1)
+
+        p5 = self.output(p5)
+        
+        return tuple([p5])

@@ -101,7 +101,7 @@ test_pipeline = [
 ]
 train_dataloader = dict(
     batch_size=64,
-    num_workers=15,
+    num_workers=19,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
@@ -137,7 +137,7 @@ train_dataloader = dict(
 
 val_dataloader = dict(
     batch_size=64,
-    num_workers=15,
+    num_workers=19,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
@@ -151,7 +151,7 @@ val_dataloader = dict(
         backend_args=backend_args))
 test_dataloader = dict(
     batch_size=64,
-    num_workers=15,
+    num_workers=19,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
