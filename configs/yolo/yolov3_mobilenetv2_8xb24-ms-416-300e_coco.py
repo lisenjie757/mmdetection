@@ -91,7 +91,7 @@ train_pipeline = [
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile', backend_args=backend_args),
-    dict(type='Resize', scale=(224, 224), keep_ratio=True),
+    dict(type='Resize', scale=(224, 224), keep_ratio=False),
     # avoid bboxes being resized
     dict(type='LoadAnnotations', with_bbox=True),
     dict(
