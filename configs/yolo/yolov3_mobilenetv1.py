@@ -19,7 +19,7 @@ model = dict(
         out_channels=[96],
         anchor_generator=dict(
             type='YOLOAnchorGenerator',
-            base_sizes=[[(116, 90), (156, 198), (373, 326)]],
+            base_sizes=[[(60.448, 80.784), (94.288, 126.09792), (127.99584, 171.7056),(164.9773984, 221.528),(214.988, 288.328)]],
             strides=[32]),
         bbox_coder=dict(type='YOLOBBoxCoder'),
         featmap_strides=[32],
@@ -81,7 +81,7 @@ train_pipeline = [
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile', backend_args=backend_args),
-    dict(type='Resize', scale=(224, 224), keep_ratio=True),
+    dict(type='Resize', scale=(224, 224), keep_ratio=False),
     # avoid bboxes being resized
     dict(type='LoadAnnotations', with_bbox=True),
     dict(

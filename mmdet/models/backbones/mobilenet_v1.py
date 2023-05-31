@@ -22,22 +22,27 @@ class MobileNetV1(nn.Module):
         self.layer1 = nn.Sequential(
             conv_dw(3,4,kernel_size=3,strides=1,padding=1),
             conv_dw(4,8,kernel_size=3,strides=2,padding=1),
+            conv_dw(8,8,kernel_size=3,strides=1,padding=1),
         )
         # stride = 4
         self.layer2 = nn.Sequential(
             conv_dw(8,16,kernel_size=3,strides=2,padding=1),
+            conv_dw(16,16,kernel_size=3,strides=1,padding=1),
         )
         # stride = 8
         self.layer3 = nn.Sequential(
             conv_dw(16,32,kernel_size=3,strides=2,padding=1),
+            conv_dw(32,32,kernel_size=3,strides=1,padding=1),
         )
         # stride = 16
         self.layer4 = nn.Sequential(
             conv_dw(32,96,kernel_size=3,strides=2,padding=1),
+            conv_dw(96,96,kernel_size=3,strides=1,padding=1),
         )
         # stride = 32
         self.layer5 = nn.Sequential(
             conv_dw(96,320,kernel_size=3,strides=2,padding=1),
+            conv_dw(320,320,kernel_size=3,strides=1,padding=1),
         )
 
     def forward(self, x):  # should return a tuple

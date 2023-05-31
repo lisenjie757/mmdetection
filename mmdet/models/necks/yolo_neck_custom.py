@@ -54,21 +54,5 @@ class YOLOK210Neck(nn.Module):
         c3, c4, c5 = feats
 
         p5 = self.convset3(c5)
-        p5_up = F.interpolate(p5, scale_factor=2)
-
-        p4 = torch.cat([c4, p5_up], 1)
-        p4 = self.convset2(p4)
-        p4_up = F.interpolate(p4, scale_factor=2)
-
-        p3 = torch.cat([c3, p4_up], 1)
-        p3 = self.convset1(p3)
-
-        p3_down = self.downsample1(p3)
-        p4 = torch.cat([p3_down, p4], 1)
-
-        p4_down = self.downsample2(p4)
-        p5 = torch.cat([p4_down, p5], 1)
-
-        p5 = self.output(p5)
         
         return tuple([p5])
