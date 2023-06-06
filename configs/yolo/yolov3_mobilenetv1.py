@@ -2,9 +2,9 @@ _base_ = ['../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py']
 # model settings
 data_preprocessor = dict(
     type='DetDataPreprocessor',
-    mean=[123.675, 116.28, 103.53],
-    std=[58.395, 57.12, 57.375],
-    bgr_to_rgb=True,
+    #mean=[123.675, 116.28, 103.53],
+    #std=[58.395, 57.12, 57.375],
+    #bgr_to_rgb=True,
     pad_size_divisor=32)
 model = dict(
     type='YOLOV3',

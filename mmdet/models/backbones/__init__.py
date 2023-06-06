@@ -18,6 +18,7 @@ from .ssd_vgg import SSDVGG
 from .swin import SwinTransformer
 from .trident_resnet import TridentResNet
 from .mobilenet_v1 import MobileNetV1
+from .yolo_fast import YOLOFast
 
 __all__ = [
     'RegNet', 'ResNet', 'ResNetV1d', 'ResNeXt', 'SSDVGG', 'HRNet',
@@ -25,5 +26,5 @@ __all__ = [
     'DetectoRS_ResNeXt', 'Darknet', 'ResNeSt', 'TridentResNet', 'CSPDarknet',
     'SwinTransformer', 'PyramidVisionTransformer',
     'PyramidVisionTransformerV2', 'EfficientNet', 'CSPNeXt',
-    'MobileNetV1'
+    'MobileNetV1', 'YOLOFast'
 ]
